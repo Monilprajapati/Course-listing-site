@@ -2,7 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { removeCourse, addCourse } from "../store/myCourseSlice";
+import { removeCourse } from "../store/myCourseSlice";
+import CourseCard from "../components/CourseCard";
 
 const MyCourses = () => {
   const dispatch = useDispatch();
@@ -11,9 +12,10 @@ const MyCourses = () => {
   const handleRemoveEnroll = (courseId, courseName) => {
     dispatch(removeCourse(courseId));
     console.log("remove course", courseName);
-    localStorage.setItem("myCourses", JSON.stringify(
-      myCourses.filter((course) => course.id !== courseId)
-    ));
+    localStorage.setItem(
+      "myCourses",
+      JSON.stringify(myCourses.filter((course) => course.id !== courseId))
+    );
   };
 
   // useEffect(() => {
@@ -32,18 +34,22 @@ const MyCourses = () => {
             <p>You have not enrolled in any courses yet</p>
           </div>
         ) : (
-          <div className="flex flex-col gap-4 p-5">
+          <div className="flex flex-col px-4 md:flex-row md:flex-wrap gap-8 lg:gap-y-6 mt-5 md:justify-center">
             {myCourses.map((course) => {
               return (
-                <div key={course.id} className="flex flex-col gap-3">
-                  <div>{course.name}</div>
-                  <button
-                    className={`p-4 bg-cyan-500 border border-black w-fit`}
-                    onClick={() => handleRemoveEnroll(course.id, course.name)}
-                  >
-                    Remove from My Courses
-                  </button>
-                </div>
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                />
+                // <div key={course.id} className="flex flex-col gap-3">
+                //   <div>{course.name}</div>
+                //   <button
+                //     className={`p-4 bg-cyan-500 border border-black w-fit`}
+                //     onClick={() => handleRemoveEnroll(course.id, course.name)}
+                //   >
+                //     Remove from My Courses
+                //   </button>
+                // </div>
               );
             })}
           </div>
