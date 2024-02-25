@@ -14,14 +14,14 @@ const courseSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchCourses.pending, (state, action) => {
+            .addCase(fetchCourses.pending, (state) => {
                 state.status = STATUSES.LOADING;
             })
             .addCase(fetchCourses.fulfilled, (state, action) => {
                 state.data = action.payload;
                 state.status = STATUSES.IDLE;
             })
-            .addCase(fetchCourses.rejected, (state, action) => {
+            .addCase(fetchCourses.rejected, (state) => {
                 state.status = STATUSES.ERROR;
             });
     },
