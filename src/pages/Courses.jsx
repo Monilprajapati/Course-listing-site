@@ -42,6 +42,7 @@ const Courses = () => {
   //     id: "1",
   //   },
   // ];
+  // Here we are fetching the courses
   useEffect(() => {
     dispatch(fetchCourses());
   }, []);
