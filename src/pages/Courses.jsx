@@ -23,7 +23,7 @@ const Courses = () => {
   //     location: "Online",
   //     enrollmentStatus: "Open",
   //     rating: 1.5,
-  //     prerequisites: ["Basic knowledge of HTML/CSS"],
+  //     prerequisites: ["Basic knowledge of HTML/CSS", "React" , "Javascript"],
   //     syllabus: [
   //       {
   //         week: 1,
