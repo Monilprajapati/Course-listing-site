@@ -20,6 +20,8 @@ const CourseDetail = () => {
   const course = useSelector((state) => state.courses.data).find(
     (c) => c.id === courseId
   );
+  const myCourses = useSelector((state) => state.myCourses);
+  const isEnrolled = myCourses.some((c) => c.id === courseId);
   if (!course) {
     return (
       <div className="w-full h-[calc(100vh-70px)] flex items-center justify-center">
@@ -35,9 +37,6 @@ const CourseDetail = () => {
       </div>
     );
   }
-  const myCourses = useSelector((state) => state.myCourses);
-  const isEnrolled = myCourses.some((c) => c.id === courseId);
-
 
   const handleEnroll = () => {
     dispatch(addCourse(course));
